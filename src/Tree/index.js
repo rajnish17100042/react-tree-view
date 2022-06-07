@@ -34,7 +34,7 @@ const TreeNode = ({ node }) => {
 
           <div className="col d-tree-head">
           <input type="checkbox"/>
-          {node.label}
+          {node.text}
         </div>  
       </div>
 
