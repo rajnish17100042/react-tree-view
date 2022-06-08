@@ -21,6 +21,7 @@
   .d-tree-toggler::before{
     content:"\25B6";
     /* display:block; */
+    
   }
 
   .d-tree-toggler.active {
