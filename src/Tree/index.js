@@ -1,4 +1,4 @@
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import "./index.css";
 
@@ -17,7 +17,7 @@ const Tree = ({ data = [] }) => {
 const TreeNode = ({ node }) => {
   const [childVisible, setChildVisiblity] = useState(false);
 
-  const hasChild = node.children ? true : false;
+  const hasChild = node.children.length ? true : false;
 
   return (
     <li className="d-tree-node border-0">
@@ -28,14 +28,15 @@ const TreeNode = ({ node }) => {
               childVisible ? "active" : ""
             }`}
           >
+       {/* <i class="fa fa-caret-right" aria-hidden="true"></i> */}
           
           </div>
         )}
 
           <div className="col d-tree-head">
-          <input type="checkbox"/>
-          {node.text}
-        </div>  
+            <input type="checkbox" value={node.id} onClick={(e)=>{console.log(e.target.value)}}/>
+            {node.text}
+         </div>  
       </div>
 
       {hasChild && childVisible && (

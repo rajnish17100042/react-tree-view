@@ -5,9 +5,24 @@
   
   .d-tree-node {
     padding: 0.2rem 0.5rem;
+    
    
   }
+
+  .d-tree-head{
+    cursor: pointer;
+  }
+
+  .d-tree-content{
+    display:inline;
+  }
   
+
+  .d-tree-toggler::before{
+    content:"\25B6";
+    /* display:block; */
+  }
+
   .d-tree-toggler.active {
     transform: rotate(45deg);
   }

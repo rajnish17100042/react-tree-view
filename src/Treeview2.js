@@ -6,39 +6,55 @@ import list_to_tree from './Tree/list_to_tree_conversion';
 var entries = [{
   "id": "12",
   "parentId": "0",
-  "text": "Man",
-  "level": "1",
-  "children": null
+  "text": "GSM",
 },
 {
   "id": "6",
   "parentId": "12",
-  "text": "Boy",
-  "level": "2",
-  "children": null
+  "text": "Layer1",
 },
 {
   "id": "7",
   "parentId": "12",
-  "text": "Other",
-  "level": "2",
-  "children": null
+  "text": "Layer2",
 },
 {
   "id": "9",
   "parentId": "0",
-  "text": "Woman",
-  "level": "1",
-  "children": null
+  "text": "CDMA",
 },
 {
   "id": "11",
   "parentId": "9",
-  "text": "Girl",
-  "level": "2",
-  "children": null
+  "text": "Layer1",
+},
+{
+  "id": "13",
+  "parentId": "14",
+  "text": "Layer1",
+},
+{
+  "id": "14",
+  "parentId": "0",
+  "text": "FPG",
+},
+{
+  "id": "15",
+  "parentId": "14",
+  "text": "Layer2",
+},
+{
+  "id": "16",
+  "parentId": "14",
+  "text": "Layer3",
+},
+{
+  "id": "17",
+  "parentId": "14",
+  "text": "Layer4",
 }
 ];
+
 
 const treeData=list_to_tree(entries);
 console.log(treeData);
