@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.data-table{
+ 
+  width:50%;
+  height:80vh;
+  overflow-y:scroll;
+}
