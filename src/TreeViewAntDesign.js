@@ -3,9 +3,6 @@ import { Tree } from 'antd';
 import React from 'react';
 import list_to_tree from './Tree/list_to_tree_conversion';
 
-
-
-
 var entries = [{
     "id": "12",
     "parentId": "0",
@@ -94,6 +91,8 @@ console.log(treeData);
 //     ],
 //   },
 // ];
+
+
 
 const TreeViewAntDesign = () => {
   const onSelect = (selectedKeys, info) => {
