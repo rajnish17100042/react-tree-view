@@ -12,9 +12,12 @@ code {
     monospace;
 }
 
-.data-table{
+/*  */.data-table{
  
-  width:50%;
-  height:80vh;
-  overflow-y:scroll;
+  width:70%;
+  /* height:80vh; */
+  /* overflow-y:scroll; */
 }
+
+
+

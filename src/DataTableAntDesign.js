@@ -124,7 +124,8 @@ const data = [
     "id": 20,
     "title": "doloribus ad provident suscipit at",
     "body": "qui consequuntur ducimus possimus quisquam amet similique\nsuscipit porro ipsam amet\neos veritatis officiis exercitationem vel fugit aut necessitatibus totam\nomnis rerum consequatur expedita quidem cumque explicabo"
-    },];
+    },
+];
 
 
 
@@ -227,6 +228,7 @@ const DataTableAntDesign = () => {
         setTimeout(() => searchInput.current?.select(), 100);
       }
     },
+
     render: (text) =>
       searchedColumn === dataIndex ? (
         <Highlighter
@@ -241,7 +243,7 @@ const DataTableAntDesign = () => {
       ) : (
         text
       ),
-  });
+    });
 
   const columns = [
     {
@@ -277,8 +279,9 @@ const DataTableAntDesign = () => {
   ];
   return (
    <>
+   <h1>React DataTable</h1>
    <div className="data-table">
-   (<Table columns={columns} dataSource={data} />)
+   <Table columns={columns} dataSource={data} />
    </div>
    </>
   );

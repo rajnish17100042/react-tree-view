@@ -8,8 +8,10 @@ import './index.css';
 // import Treeview2 from './Treeview2';
 // import PrimeReactTree from './PrimeReactTree';
 // import TreeViewAntDesign from './TreeViewAntDesign';
-import DataTableAntDesign from './DataTableAntDesign';
+// import DataTableAntDesign from './DataTableAntDesign';
+import BootstrapDataTable from './BootstrapDataTable';
+
 
 const container = document.getElementById('root');
 const root = createRoot(container);
-root.render(<DataTableAntDesign />);
+root.render(<BootstrapDataTable />);
