@@ -4,6 +4,8 @@ import React ,{useState,useEffect} from 'react'
 const CustomDataTable = (props) => {
     const [tableData,setTableData]=useState(props.data);
     const [order,setOrder]=useState("ASC");
+    const [searchTerm,setSearchTerm]=useState('');
+
     console.log(props);
 
    const sorting=(col)=>{
@@ -27,7 +29,9 @@ const CustomDataTable = (props) => {
 
     return (
     <>
-      <h1>Custom DataTable</h1>
+       <div className="search-bar">
+         <input type="text" placeholder="Search.." onChange={(e)=>{setSearchTerm(e.target.value)}}></input>
+        </div>
       <table>
         <thead>
             <tr>
@@ -46,10 +50,17 @@ const CustomDataTable = (props) => {
         <tbody>
            
         {tableData.length>0?(
-                tableData.map((row,index)=>{
+                tableData.filter((val)=>{
+                    if(searchTerm==""){  
+                        return val;
+                    }else if(val[props.searchAttr].toLowerCase().includes(searchTerm.toLowerCase())){
+                        return val
+
+                    }
+                }).map((row,index)=>{
                     return(
                         <tr key={index}>
-                            <td className="table-icon" onClick={()=>{console.log(row)}}><i className="fa-solid fa-greater-than"></i></td>
+                            <td className="table-icon" onClick={()=>{console.log(row)}}><i className={props.icon}></i></td>
                             {props.cols.map((col,index2)=>{
                                 return(
                                 // <td key={index2}>{ col == "completed" ? (row[col] ? "true" : "false") :row[col] }</td>

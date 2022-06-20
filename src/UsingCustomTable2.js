@@ -64,12 +64,14 @@ const data=[
     },];
 
     const cols=['userId','id','title','completed'];
-
+    const icon="fa fa-eye";
+    const searchAttr="title";
 const UsingCustomTable2 = () => {
   return (
     <>
+    <h1>Custom DataTable</h1>
     <div className="custom-data-table">
-    <CustomDataTable data={data} cols={cols}/>
+    <CustomDataTable data={data} cols={cols} icon={icon} searchAttr={searchAttr}/>
     </div>
     </>
   )
