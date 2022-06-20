@@ -29,8 +29,12 @@ const CustomDataTable = (props) => {
 
     return (
     <>
-       <div className="search-bar">
+       {/* <div className="search-bar">
          <input type="text" placeholder="Search.." onChange={(e)=>{setSearchTerm(e.target.value)}}></input>
+        </div> */}
+         <div className="search-bar">
+            <i className="fa fa-search"></i>
+            <input type="text" className="form-control " placeholder="Search Tasks..."/>
         </div>
       <table>
         <thead>
