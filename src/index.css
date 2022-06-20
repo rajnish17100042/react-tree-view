@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-/*  */.data-table{
+.data-table{
  
 max-width:70%;
   height:80vh; 
@@ -20,4 +20,35 @@ max-width:70%;
 }
 
 
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  margin:15px;
+ 
+}
+.custom-data-table{
+  width:90%;
+  height:90vh;
+  overflow:scroll;
+}
+
+td, th {
+  border: 1px solid #c09c9c;
+  text-align: left;
+  padding: 8px;
+}
+th {
+  background: white;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+.table-icon:hover{
+  cursor:pointer;
+}
+
+/* tr:nth-child(even) {
+  background-color: #dddddd;
+} */
 

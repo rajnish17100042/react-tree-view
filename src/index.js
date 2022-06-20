@@ -9,9 +9,16 @@ import './index.css';
 // import PrimeReactTree from './PrimeReactTree';
 // import TreeViewAntDesign from './TreeViewAntDesign';
 // import DataTableAntDesign from './DataTableAntDesign';
-import BootstrapDataTable from './BootstrapDataTable';
+// import BootstrapDataTable from './BootstrapDataTable';
+// import LegendComponent from './LegendComponent';
+// import CustomDataTable from './CustomDataTable';
+// import UsingCustomTable from './UsingCustomTable';
+// import UsingCustomTable2 from './UsingCustomTable2';
+import UsingCustomTable3 from './UsingCustomTable3';
+
+
 
 
 const container = document.getElementById('root');
 const root = createRoot(container);
-root.render(<BootstrapDataTable />);
+root.render(<UsingCustomTable3 />);

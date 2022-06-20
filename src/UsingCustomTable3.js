@@ -1,14 +1,7 @@
-import React,{useState,useEffect} from 'react'
-import BootstrapTable from 'react-bootstrap-table-next';
-import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import paginationFactory from 'react-bootstrap-table2-paginator';
-import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
-const BootstrapDataTable = () => {
-    // const [data,setData]=useState([]);
+import React from 'react'
+import CustomDataTable from './CustomDataTable';
 
-
-   const data=[
+const data=[
     {
     "postId": 1,
     "id": 1,
@@ -148,61 +141,88 @@ const BootstrapDataTable = () => {
     "name": "molestias expedita iste aliquid voluptates",
     "email": "Mariana_Orn@preston.org",
     "body": "qui harum consequatur fugiat\net eligendi perferendis at molestiae commodi ducimus\ndoloremque asperiores numquam qui\nut sit dignissimos reprehenderit tempore"
-    }]
+    },
+    {
+    "postId": 5,
+    "id": 21,
+    "name": "aliquid rerum mollitia qui a consectetur eum sed",
+    "email": "Noemie@marques.me",
+    "body": "deleniti aut sed molestias explicabo\ncommodi odio ratione nesciunt\nvoluptate doloremque est\nnam autem error delectus"
+    },
+    {
+    "postId": 5,
+    "id": 22,
+    "name": "porro repellendus aut tempore quis hic",
+    "email": "Khalil@emile.co.uk",
+    "body": "qui ipsa animi nostrum praesentium voluptatibus odit\nqui non impedit cum qui nostrum aliquid fuga explicabo\nvoluptatem fugit earum voluptas exercitationem temporibus dignissimos distinctio\nesse inventore reprehenderit quidem ut incidunt nihil necessitatibus rerum"
+    },
+    {
+    "postId": 5,
+    "id": 23,
+    "name": "quis tempora quidem nihil iste",
+    "email": "Sophia@arianna.co.uk",
+    "body": "voluptates provident repellendus iusto perspiciatis ex fugiat ut\nut dolor nam aliquid et expedita voluptate\nsunt vitae illo rerum in quos\nvel eligendi enim quae fugiat est"
+    },
+    {
+    "postId": 5,
+    "id": 24,
+    "name": "in tempore eos beatae est",
+    "email": "Jeffery@juwan.us",
+    "body": "repudiandae repellat quia\nsequi est dolore explicabo nihil et\net sit et\net praesentium iste atque asperiores tenetur"
+    },
+    {
+    "postId": 5,
+    "id": 25,
+    "name": "autem ab ea sit alias hic provident sit",
+    "email": "Isaias_Kuhic@jarrett.net",
+    "body": "sunt aut quae laboriosam sit ut impedit\nadipisci harum laborum totam deleniti voluptas odit rem ea\nnon iure distinctio ut velit doloribus\net non ex"
+    },
+    {
+    "postId": 6,
+    "id": 26,
+    "name": "in deleniti sunt provident soluta ratione veniam quam praesentium",
+    "email": "Russel.Parker@kameron.io",
+    "body": "incidunt sapiente eaque dolor eos\nad est molestias\nquas sit et nihil exercitationem at cumque ullam\nnihil magnam et"
+    },
+    {
+    "postId": 6,
+    "id": 27,
+    "name": "doloribus quibusdam molestiae amet illum",
+    "email": "Francesco.Gleason@nella.us",
+    "body": "nisi vel quas ut laborum ratione\nrerum magni eum\nunde et voluptatem saepe\nvoluptas corporis modi amet ipsam eos saepe porro"
+    },
+    {
+    "postId": 6,
+    "id": 28,
+    "name": "quo voluptates voluptas nisi veritatis dignissimos dolores ut officiis",
+    "email": "Ronny@rosina.org",
+    "body": "voluptatem repellendus quo alias at laudantium\nmollitia quidem esse\ntemporibus consequuntur vitae rerum illum\nid corporis sit id"
+    },
+    {
+    "postId": 6,
+    "id": 29,
+    "name": "eum distinctio amet dolor",
+    "email": "Jennings_Pouros@erica.biz",
+    "body": "tempora voluptatem est\nmagnam distinctio autem est dolorem\net ipsa molestiae odit rerum itaque corporis nihil nam\neaque rerum error"
+    },
+    {
+    "postId": 6,
+    "id": 30,
+    "name": "quasi nulla ducimus facilis non voluptas aut",
+    "email": "Lurline@marvin.biz",
+    "body": "consequuntur quia voluptate assumenda et\nautem voluptatem reiciendis ipsum animi est provident\nearum aperiam sapiente ad vitae iste\naccusantium aperiam eius qui dolore voluptatem et"
+    },
+   ]
 
-// const getData=async()=>{
-//    const response= await fetch('https://jsonplaceholder.typicode.com/comments');
-//    const result=await response.json();
-//    console.log(result);
-//    setData(result);
-// }
-  //  useEffect(()=>{
-  //   getData();
-  //  },[]);
-
-    const columns=[
-        {dataField:'id',text:'Id',sort:true},
-        {dataField:'name',text:'Name',sort:true},
-        {dataField:'email',text:'Email',sort:true},
-        {dataField:'body',text:'Body',sort:true},
-        
-    ];
-
-    const pagination=paginationFactory({
-      page:1,
-      sizePerPage:5,
-      lastPageText:'>>',
-      firstPageText:'<<',
-      nextPageText:'>',
-      prePageText:'<',
-      showTotal:true,
-      alwaysShowAllBtns:true,
-      onPageChange:function(page,sizePerPage){
-       console.log('page',page);
-       console.log('sizePerPage',sizePerPage);
-      },
-      onSizePerPageChange:function(page,sizePerPage){
-        console.log('page',page);
-        console.log('sizePerPage',sizePerPage);
-       },
-    });
-
+   const cols=['postId','id','name','email','body'];
+const UsingCustomTable3 = () => {
   return (
     <>
-    <h1>Bootstrap DataTable</h1>
-    <div className="data-table">
-      {/* {data.length>0?(<BootstrapTable keyField='id' columns={columns} data={data}/>):''} */}
-      <BootstrapTable 
-      bootstrap4 
-      keyField='id' 
-      columns={columns} 
-      data={data}
-      // pagination={pagination}
-      />
+    <div className="custom-data-table">
+    <CustomDataTable data={data} cols={cols}/>
     </div>
-    
     </>
   )
 }
 
-export default BootstrapDataTable
+export default UsingCustomTable3
