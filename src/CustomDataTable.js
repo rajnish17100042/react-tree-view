@@ -6,7 +6,7 @@ const CustomDataTable = (props) => {
     const [order,setOrder]=useState("ASC");
     const [searchTerm,setSearchTerm]=useState('');
 
-    console.log(props);
+    // console.log(props);
 
    const sorting=(col)=>{
     if(col.type!=='number'){
@@ -46,6 +46,26 @@ const CustomDataTable = (props) => {
    }
    
 
+   const filterDataBySearch = (searchAttr,val,searchTerm) => {
+    let indexArr = [];
+    let isFound = false;
+    searchAttr.forEach((ele,index) => {
+        if(typeof ele === 'string')  indexArr.push(index);
+    });
+
+    // console.log(indexArr);
+
+    indexArr.forEach((index) => {
+        if(!isFound && isNaN(val[searchAttr[index]])) {
+            if(val[searchAttr[index]].toLowerCase().includes(searchTerm))  isFound = true;
+        }else if(!isNaN(val[searchAttr[index]])){
+            if(val[searchAttr[index]] == searchTerm)  isFound = true;
+        }
+    })
+
+    return isFound;
+   }
+
     return (
     <>
        {/* <div className="search-bar">
@@ -74,16 +94,15 @@ const CustomDataTable = (props) => {
            
         {tableData.length>0?(
                 tableData.filter((val)=>{
-                   props.searchAttr.map((attr)=>{
-                   })
                    if(searchTerm==""){  
                     return val;
                    }else if(
                     // val[props.searchAttr.map((attr,index)=>index)].
                     // toLowerCase().includes(searchTerm.toLowerCase())
-                    val[props.searchAttr[2]].toLowerCase().includes(searchTerm.toLowerCase())
+                    // val[props.searchAttr[2]].toLowerCase().includes(searchTerm.toLowerCase());
 
-                 ){
+                        filterDataBySearch(props.searchAttr,val,searchTerm.toLocaleLowerCase())
+                    ){
                     return val
                    }
                    
