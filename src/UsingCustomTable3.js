@@ -215,14 +215,47 @@ const data=[
    ]
 
    const cols=['postId','id','name','email','body'];
+
+   const cols1=[
+    {
+    attr:'postId',
+    type:'number',  //by default string
+    sort:true,//by default false 
+    },
+    {
+      attr:'id',
+      type:'number', 
+      // sort:false,   //by default feature is taken care
+    },
+    {
+      attr:'name',
+      // type:'string', //by default feature is taken care
+      sort:true,
+    },
+    {
+      attr:'email',
+      // type:'string', 
+      sort:true,
+    },
+    {
+      attr:'body',
+      // type:'string', 
+      sort:true,
+    },
+
+
+
+   ]
    const icon="fa-solid fa-greater-than";
-   const searchAttr="email"
+  //  const searchAttr="email"
+   const searchAttr=cols;
+
 const UsingCustomTable3 = () => {
   return (
     <>
      <h1>Custom DataTable</h1>
     <div className="custom-data-table">
-    <CustomDataTable data={data} cols={cols} searchAttr={searchAttr} />
+    <CustomDataTable data={data} cols={cols1} icon={icon} searchAttr={searchAttr} />
     </div>
     </>
   )

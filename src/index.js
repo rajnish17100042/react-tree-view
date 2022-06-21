@@ -13,12 +13,12 @@ import './index.css';
 // import LegendComponent from './LegendComponent';
 // import CustomDataTable from './CustomDataTable';
 // import UsingCustomTable from './UsingCustomTable';
-import UsingCustomTable2 from './UsingCustomTable2';
-// import UsingCustomTable3 from './UsingCustomTable3';
+// import UsingCustomTable2 from './UsingCustomTable2';
+import UsingCustomTable3 from './UsingCustomTable3';
 
 
 
 
 const container = document.getElementById('root');
 const root = createRoot(container);
-root.render(<UsingCustomTable2 />);
+root.render(<UsingCustomTable3 />);

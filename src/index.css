@@ -72,7 +72,7 @@ table {
 }
 
 .custom-data-table::-webkit-scrollbar{
-  width:5px;
+  width:10px;
   border-radius:5px;
 }
 
@@ -82,7 +82,7 @@ table {
 }
 
 .custom-data-table::-webkit-scrollbar-thumb{
-  background-image:linear-gradient(#f20bd6,#20bcf2);
+  background-image:linear-gradient(#d8d3d8,#d4d8da);
   border-radius:5px;
 }
 

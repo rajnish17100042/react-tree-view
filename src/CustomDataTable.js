@@ -9,21 +9,40 @@ const CustomDataTable = (props) => {
     console.log(props);
 
    const sorting=(col)=>{
-       if(order==="ASC"){
+    if(col.type!=='number'){
+        if(order==="ASC"){
+            const sorted=[...tableData].sort((a,b)=>
+              a[col.attr].toLowerCase()>b[col.attr].toLowerCase() ? 1:-1
+            );
+            
+            setTableData(sorted);
+            setOrder("DSC");
+         }
+         if(order==="DSC"){
           const sorted=[...tableData].sort((a,b)=>
-            a[col].toLowerCase()>b[col].toLowerCase() ? 1:-1
+            a[col.attr].toLowerCase()<b[col.attr].toLowerCase() ? 1:-1
           );
-          
           setTableData(sorted);
-          setOrder("DSC");
+          setOrder("ASC");
        }
-       if(order==="DSC"){
-        const sorted=[...tableData].sort((a,b)=>
-          a[col].toLowerCase()<b[col].toLowerCase() ? 1:-1
-        );
-        setTableData(sorted);
-        setOrder("ASC");
-     }
+    }else{
+        if(order==="ASC"){
+            const sorted=[...tableData].sort((a,b)=>
+              b[col.attr]-a[col.attr]
+            );
+            
+            setTableData(sorted);
+            setOrder("DSC");
+         }
+         if(order==="DSC"){
+          const sorted=[...tableData].sort((a,b)=>
+            a[col.attr]-b[col.attr]
+          );
+          setTableData(sorted);
+          setOrder("ASC");
+       }
+    }
+    
    }
    
 
@@ -34,7 +53,7 @@ const CustomDataTable = (props) => {
         </div> */}
          <div className="search-bar">
             <i className="fa fa-search"></i>
-            <input type="text" className="form-control " placeholder="Search Tasks..."/>
+            <input type="text" className="form-control " placeholder="Search Tasks..." onChange={(e)=>{setSearchTerm(e.target.value)}}/>
         </div>
       <table>
         <thead>
@@ -44,7 +63,7 @@ const CustomDataTable = (props) => {
 
                 props.cols.map((col,index)=>{
                     return(
-                        <th key={index} onClick={()=>{sorting(col)}}>{col}</th>
+                        <th key={index} onClick={col.sort?()=>{sorting(col)}:null}>{col.attr}</th>
                     )
                 })
              ):'error'}   
@@ -55,12 +74,20 @@ const CustomDataTable = (props) => {
            
         {tableData.length>0?(
                 tableData.filter((val)=>{
-                    if(searchTerm==""){  
-                        return val;
-                    }else if(val[props.searchAttr].toLowerCase().includes(searchTerm.toLowerCase())){
-                        return val
+                   props.searchAttr.map((attr)=>{
+                   })
+                   if(searchTerm==""){  
+                    return val;
+                   }else if(
+                    // val[props.searchAttr.map((attr,index)=>index)].
+                    // toLowerCase().includes(searchTerm.toLowerCase())
+                    val[props.searchAttr[2]].toLowerCase().includes(searchTerm.toLowerCase())
 
-                    }
+                 ){
+                    return val
+                   }
+                   
+                  
                 }).map((row,index)=>{
                     return(
                         <tr key={index}>
@@ -68,7 +95,7 @@ const CustomDataTable = (props) => {
                             {props.cols.map((col,index2)=>{
                                 return(
                                 // <td key={index2}>{ col == "completed" ? (row[col] ? "true" : "false") :row[col] }</td>
-                                <td key={index2}>{ col == "completed" ? (row[col] ? "true" : "false") :row[col] }</td>
+                                <td key={index2}>{ col == "completed" ? (row[col.attr] ? "true" : "false") :row[col.attr] }</td>
                                 )
                             })}
                         </tr>
