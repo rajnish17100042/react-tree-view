@@ -214,7 +214,7 @@ const data=[
       },
    ]
 
-   const cols=['postId','id','name','email','body'];
+  //  const cols=['postId','id','name','email','body'];
 
    const cols1=[
     {
@@ -248,14 +248,19 @@ const data=[
    ]
    const icon="fa-solid fa-greater-than";
   //  const searchAttr="email"
-   const searchAttr=cols;
+  //  const searchAttr=cols;
+
+  const receiveData=(data)=>{
+    console.log("Displaying data in Parent Component");
+    console.log(data.id);
+  }
 
 const UsingCustomTable3 = () => {
   return (
     <>
      <h1>Custom DataTable</h1>
     <div className="custom-data-table">
-    <CustomDataTable data={data} cols={cols1} icon={icon} searchAttr={searchAttr} />
+    <CustomDataTable data={data} cols={cols1} icon={icon} searchAttr={cols1} receiveData={receiveData}/>
     </div>
     </>
   )

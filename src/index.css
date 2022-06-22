@@ -67,8 +67,6 @@ table {
   width:90%;
   height:90vh;
   overflow:auto;
-  
-  
 }
 
 .custom-data-table::-webkit-scrollbar{

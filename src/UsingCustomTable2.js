@@ -63,15 +63,37 @@ const data=[
     "completed": true
     },];
 
-    const cols=['userId','id','title','completed'];
+    // const cols=['userId','id','title','completed'];
+    const cols1=[
+      {
+      attr:'userId',
+      type:'number',  //by default string
+      sort:true,//by default false 
+      },
+      {
+        attr:'id',
+        type:'number', 
+        // sort:false,   //by default feature is taken care
+      },
+      {
+        attr:'title',
+        // type:'string', //by default feature is taken care
+        sort:true,
+      },
+      {
+        attr:'completed',
+        // type:'string', 
+        sort:true,
+      },
+    ]
     const icon="fa fa-eye";
-    const searchAttr="title";
+    // const searchAttr="title";
 const UsingCustomTable2 = () => {
   return (
     <>
     <h1>Custom DataTable</h1>
     <div className="custom-data-table">
-    <CustomDataTable data={data} cols={cols} icon={icon} searchAttr={searchAttr}/>
+    <CustomDataTable data={data} cols={cols1} icon={icon} searchAttr={cols1}/>
     </div>
     </>
   )

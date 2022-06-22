@@ -1,7 +1,7 @@
 import React ,{useState,useEffect} from 'react'
 
-
 const CustomDataTable = (props) => {
+
     const [tableData,setTableData]=useState(props.data);
     const [order,setOrder]=useState("ASC");
     const [searchTerm,setSearchTerm]=useState('');
@@ -9,7 +9,7 @@ const CustomDataTable = (props) => {
     // console.log(props);
 
    const sorting=(col)=>{
-    if(col.type!=='number'){
+     if(col.type!=='number'){
         if(order==="ASC"){
             const sorted=[...tableData].sort((a,b)=>
               a[col.attr].toLowerCase()>b[col.attr].toLowerCase() ? 1:-1
@@ -24,8 +24,8 @@ const CustomDataTable = (props) => {
           );
           setTableData(sorted);
           setOrder("ASC");
-       }
-    }else{
+        }
+     }else{
         if(order==="ASC"){
             const sorted=[...tableData].sort((a,b)=>
               b[col.attr]-a[col.attr]
@@ -50,16 +50,17 @@ const CustomDataTable = (props) => {
     let indexArr = [];
     let isFound = false;
     searchAttr.forEach((ele,index) => {
-        if(typeof ele === 'string')  indexArr.push(index);
+        // if(typeof ele === 'string')  
+        indexArr.push(index);
     });
 
     // console.log(indexArr);
 
     indexArr.forEach((index) => {
-        if(!isFound && isNaN(val[searchAttr[index]])) {
-            if(val[searchAttr[index]].toLowerCase().includes(searchTerm))  isFound = true;
-        }else if(!isNaN(val[searchAttr[index]])){
-            if(val[searchAttr[index]] == searchTerm)  isFound = true;
+        if(!isFound && isNaN(val[searchAttr[index].attr])) {
+            if(val[searchAttr[index].attr].toLowerCase().includes(searchTerm))  isFound = true;
+        }else if(!isNaN(val[searchAttr[index].attr])){
+            if(val[searchAttr[index].attr] == searchTerm)  isFound = true;
         }
     })
 
@@ -71,6 +72,7 @@ const CustomDataTable = (props) => {
        {/* <div className="search-bar">
          <input type="text" placeholder="Search.." onChange={(e)=>{setSearchTerm(e.target.value)}}></input>
         </div> */}
+
          <div className="search-bar">
             <i className="fa fa-search"></i>
             <input type="text" className="form-control " placeholder="Search Tasks..." onChange={(e)=>{setSearchTerm(e.target.value)}}/>
@@ -110,11 +112,11 @@ const CustomDataTable = (props) => {
                 }).map((row,index)=>{
                     return(
                         <tr key={index}>
-                            <td className="table-icon" onClick={()=>{console.log(row)}}><i className={props.icon}></i></td>
+                            <td className="table-icon" onClick={()=>{props.receiveData(row)}}><i className={props.icon}></i></td>
                             {props.cols.map((col,index2)=>{
                                 return(
                                 // <td key={index2}>{ col == "completed" ? (row[col] ? "true" : "false") :row[col] }</td>
-                                <td key={index2}>{ col == "completed" ? (row[col.attr] ? "true" : "false") :row[col.attr] }</td>
+                                <td key={index2}>{ col.attr == "completed" ? (row[col.attr] ? "true" : "false") :row[col.attr] }</td>
                                 )
                             })}
                         </tr>
