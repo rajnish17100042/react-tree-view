@@ -5,6 +5,7 @@ const CustomDataTable = (props) => {
     const [tableData,setTableData]=useState(props.data);
     const [order,setOrder]=useState("ASC");
     const [searchTerm,setSearchTerm]=useState('');
+    const [sortSymbol,setSortSymbol]=useState('up');
 
     // console.log(props);
 
@@ -17,6 +18,7 @@ const CustomDataTable = (props) => {
             
             setTableData(sorted);
             setOrder("DSC");
+            setSortSymbol('down');
          }
          if(order==="DSC"){
           const sorted=[...tableData].sort((a,b)=>
@@ -24,6 +26,7 @@ const CustomDataTable = (props) => {
           );
           setTableData(sorted);
           setOrder("ASC");
+          setSortSymbol('up');
         }
      }else{
         if(order==="ASC"){
@@ -33,6 +36,7 @@ const CustomDataTable = (props) => {
             
             setTableData(sorted);
             setOrder("DSC");
+            setSortSymbol('down');
          }
          if(order==="DSC"){
           const sorted=[...tableData].sort((a,b)=>
@@ -40,6 +44,7 @@ const CustomDataTable = (props) => {
           );
           setTableData(sorted);
           setOrder("ASC");
+          setSortSymbol('up');
        }
     }
     
@@ -116,7 +121,7 @@ const CustomDataTable = (props) => {
 
                 props.cols.map((col,index)=>{
                     return(
-                        <th key={index} onClick={col.sort?()=>{sorting(col)}:null}>{col.attr}</th>
+                        <th key={index} onClick={col.sort?()=>{sorting(col)}:null}>{col.attr} {col.sort?(<i class={`fas fa-caret-${sortSymbol}`}></i>):null}</th>
                     )
                 })
              ):'error'}   
