@@ -47,25 +47,56 @@ const CustomDataTable = (props) => {
    
 
    const filterDataBySearch = (searchAttr,val,searchTerm) => {
-    let indexArr = [];
+    // let indexArr = [];
     let isFound = false;
-    searchAttr.forEach((ele,index) => {
-        // if(typeof ele === 'string')  
-        indexArr.push(index);
-    });
+    // searchAttr.forEach((ele,index) => {
+    //     // if(typeof ele === 'string')  
+    //     indexArr.push(index);
+    // });
 
     // console.log(indexArr);
-
-    indexArr.forEach((index) => {
+    
+    searchAttr.forEach((attr,index) => {
         if(!isFound && isNaN(val[searchAttr[index].attr])) {
-            if(val[searchAttr[index].attr].toLowerCase().includes(searchTerm))  isFound = true;
+            if(val[searchAttr[index].attr].toLowerCase().includes(searchTerm)){  
+              isFound = true;
+            }
         }else if(!isNaN(val[searchAttr[index].attr])){
-            if(val[searchAttr[index].attr] == searchTerm)  isFound = true;
+            if(val[searchAttr[index].attr] == searchTerm){  
+              isFound = true;
+            }
         }
     })
 
     return isFound;
    }
+
+  const highlightData=(val,key)=>{
+    // console.log(val);
+    // console.log(searchTerm);
+    val=val+''
+    let index=-1; 
+
+    if(searchTerm!==''){
+      index=val.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase());
+      const regexp=new RegExp(searchTerm,'gi');
+      const check= (val).match(regexp,`<mark>${searchTerm}</mark>`);
+      // console.log(check);
+      const last_index=index+searchTerm.length;
+      if(check){
+        return <td key={key}>{val.slice(0,index)}<mark>{val.slice(index,last_index)}</mark>{val.slice(last_index,-1)}</td>;
+      }
+     
+    }
+  
+     return <td key={key}>{val}</td>
+   
+   }
+
+  
+
+
+
 
     return (
     <>
@@ -113,17 +144,18 @@ const CustomDataTable = (props) => {
                     return(
                         <tr key={index}>
                             <td className="table-icon" onClick={()=>{props.receiveData(row)}}><i className={props.icon}></i></td>
-                            {props.cols.map((col,index2)=>{
+                            {props.cols.map((col,key2)=>{
                                 return(
-                                // <td key={index2}>{ col == "completed" ? (row[col] ? "true" : "false") :row[col] }</td>
-                                <td key={index2}>{ col.attr == "completed" ? (row[col.attr] ? "true" : "false") :row[col.attr] }</td>
+                                //  <td key={index2}>{ col.attr == "completed" ? (row[col.attr] ? "true" : "false") :  row[col.attr] }</td>
+                                 highlightData(row[col.attr],key2) 
+                               
                                 )
                             })}
                         </tr>
                     )
                 })
              ):'error'} 
-
+           
            
          
         </tbody>

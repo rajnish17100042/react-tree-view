@@ -252,7 +252,7 @@ const data=[
 
   const receiveData=(data)=>{
     console.log("Displaying data in Parent Component");
-    console.log(data.id);
+    console.log(data);
   }
 
 const UsingCustomTable3 = () => {
